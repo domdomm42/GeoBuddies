@@ -1,0 +1,21 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-selection {
+  display: flex;
+  z-index: 1000;
+}
+
+.userMap {
+  position: absolute;
+  right: 2vw;
+  bottom: 4vh;
+}
+
+.submitButton {
+  margin-top: 1vh;
+  display: flex;
+  justify-content: center;
+}

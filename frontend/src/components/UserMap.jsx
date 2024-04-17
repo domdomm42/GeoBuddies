@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
+import SubmitButton from "./SubmitButton";
 
 export default function UserMap() {
   let [marker, setMarker] = useState({ lat: 22.54992, lng: 0 });
-  let [mapSize, setMapSize] = useState({ height: "30vh", width: "30vw" });
+  let [mapSize, setMapSize] = useState({ height: "25vh", width: "25vw" });
+  let [mapOpacity, setMapOpacity] = useState(0.5);
 
   const onMapClick = (e) => {
     console.log(e);
@@ -16,43 +18,46 @@ export default function UserMap() {
 
   const onMapHover = () => {
     setMapSize({
-      height: "50vh",
-      width: "50vw",
+      height: "40vh",
+      width: "40vw",
     });
+
+    setMapOpacity(1);
   };
 
   const onMapLeave = () => {
     setMapSize({
-      height: "30vh",
-      width: "30vw",
+      height: "25vh",
+      width: "25vw",
     });
+
+    setMapOpacity(0.5);
   };
 
   return (
-    <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-      <Map
-        style={{
-          width: mapSize.width,
-          height: mapSize.height,
-          position: "absolute",
-          right: "0",
-          bottom: "0",
-        }}
-        defaultCenter={{ lat: 22.54992, lng: 0 }}
-        defaultZoom={3}
-        gestureHandling={"greedy"}
-        disableDefaultUI={true}
-        onClick={onMapClick}
-        onMouseover={onMapHover}
-        onMouseout={onMapLeave}
-      >
-        <Marker
-          position={{
-            lat: marker.lat,
-            lng: marker.lng,
+    <div className="userMap" onMouseOver={onMapHover} onMouseOut={onMapLeave}>
+      <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+        <Map
+          style={{
+            width: mapSize.width,
+            height: mapSize.height,
+            opacity: mapOpacity,
           }}
-        />
-      </Map>
-    </APIProvider>
+          defaultCenter={{ lat: 22.54992, lng: 0 }}
+          defaultZoom={3}
+          gestureHandling={"greedy"}
+          disableDefaultUI={true}
+          onClick={onMapClick}
+        >
+          <Marker
+            position={{
+              lat: marker.lat,
+              lng: marker.lng,
+            }}
+          />
+        </Map>
+      </APIProvider>
+      <SubmitButton width={mapSize.width} opacity={mapOpacity} />
+    </div>
   );
 }

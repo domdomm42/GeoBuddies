@@ -1,11 +1,6 @@
-import StreetViewMap from "./components/StreetViewMap";
-import UserMap from "./components/UserMap";
+import GamePage from "./pages/GamePage";
+import "./App.css";
 
 export default function App() {
-  return (
-    <>
-      <StreetViewMap />
-      <UserMap />
-    </>
-  );
+  return <GamePage />;
 }
