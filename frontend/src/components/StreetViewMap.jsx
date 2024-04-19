@@ -5,7 +5,7 @@ export default function StreetViewMap() {
 
   useEffect(() => {
     const initialize = () => {
-      const fenway = { lat: 11.513072020728432, lng: 104.98290682292783 };
+      const fenway = { lng: 151.2073975, lat: -33.8567543 };
 
       new window.google.maps.StreetViewPanorama(panoRef.current, {
         disableDefaultUI: true,
