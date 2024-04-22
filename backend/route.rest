@@ -1,16 +1,7 @@
-GET http://localhost:3000/subscribers
+GET http://localhost:3000/location/
 
 ###
-
-GET http://localhost:3000/subscribers/15
+GET http://localhost:3000/location/6625215d6f4e808622651cdf
 
 
 ###
-
-POST http://localhost:3000/subscribers
-Content-Type: application/json
-
-{
-    "name": "Amazing Person",
-    "subscribedToChannel": "Web Dev Simplified"
-}

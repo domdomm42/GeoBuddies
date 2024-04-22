@@ -1,15 +1,26 @@
 import { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
-export default function StreetViewMap() {
+export default function StreetViewMap({ long, lat }) {
   const panoRef = useRef(null);
 
   useEffect(() => {
     const initialize = () => {
-      const fenway = { lng: 151.2073975, lat: -33.8567543 };
+      if (
+        !window.google ||
+        !window.google.maps ||
+        !window.google.maps.StreetViewPanorama
+      ) {
+        console.error("Google Maps JavaScript API not loaded.");
+        return;
+      }
+
+      console.log(long);
+      const location = { long, lat };
 
       new window.google.maps.StreetViewPanorama(panoRef.current, {
         disableDefaultUI: true,
-        position: fenway,
+        position: location,
         pov: {
           heading: 34,
           pitch: 10,
@@ -37,7 +48,7 @@ export default function StreetViewMap() {
     window.initialize = initialize;
 
     loadGoogleMapScript();
-  }, []);
+  }, [long, lat]);
 
   return (
     <div>
@@ -49,3 +60,8 @@ export default function StreetViewMap() {
     </div>
   );
 }
+
+StreetViewMap.propTypes = {
+  long: PropTypes.number,
+  lat: PropTypes.number,
+};
