@@ -5,15 +5,13 @@ import SubmitButton from "./SubmitButton";
 export default function UserMap() {
   let [marker, setMarker] = useState({ lat: 22.54992, lng: 0 });
   let [mapSize, setMapSize] = useState({ height: "25vh", width: "25vw" });
-  let [mapOpacity, setMapOpacity] = useState(0.5);
+  let [mapOpacity, setMapOpacity] = useState("0.5");
 
   const onMapClick = (e) => {
-    console.log(e);
     setMarker({
       lat: e.detail.latLng.lat,
       lng: e.detail.latLng.lng,
     });
-    console.log(marker);
   };
 
   const onMapHover = () => {
@@ -22,7 +20,7 @@ export default function UserMap() {
       width: "40vw",
     });
 
-    setMapOpacity(1);
+    setMapOpacity("1");
   };
 
   const onMapLeave = () => {
@@ -31,7 +29,7 @@ export default function UserMap() {
       width: "25vw",
     });
 
-    setMapOpacity(0.5);
+    setMapOpacity("0.5");
   };
 
   return (
