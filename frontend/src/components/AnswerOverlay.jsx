@@ -9,6 +9,12 @@ import {
 } from "@nextui-org/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import {
+  APIProvider,
+  Map,
+  AdvancedMarker,
+  Pin,
+} from "@vis.gl/react-google-maps";
 
 export default function AnswerOverlay({
   userPinnedCoordinates,
@@ -71,44 +77,46 @@ export default function AnswerOverlay({
         isKeyboardDismissDisabled={true}
       >
         <ModalContent>
-          {(onClose) => (
+          {
             <>
               <ModalHeader className="flex flex-col gap-1">
                 Distance is off by {distanceFromLocation} meters
               </ModalHeader>
               <ModalBody>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                </p>
-                <p>
-                  Magna exercitation reprehenderit magna aute tempor cupidatat
-                  consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
-                  incididunt cillum quis. Velit duis sit officia eiusmod Lorem
-                  aliqua enim laboris do dolor eiusmod. Et mollit incididunt
-                  nisi consectetur esse laborum eiusmod pariatur proident Lorem
-                  eiusmod et. Culpa deserunt nostrud ad veniam.
-                </p>
+                <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+                  <Map
+                    style={{
+                      width: "20vw",
+                      height: "20vh",
+                      opacity: 1,
+                    }}
+                    defaultCenter={{ lat: 22.54992, lng: 0 }}
+                    defaultZoom={3}
+                    gestureHandling="greedy"
+                    disableDefaultUI={true}
+                    mapId={import.meta.env.VITE_GOOGLE_MAPS_ID}
+                  >
+                    <AdvancedMarker position={userPinnedCoordinates} />
+                    <AdvancedMarker
+                      position={streetViewCoordinates.streetViewCoordinates}
+                    >
+                      <Pin background="#45d483" borderColor="green"></Pin>
+                    </AdvancedMarker>
+                  </Map>
+                </APIProvider>
               </ModalBody>
+
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
                 <Button
-                  color="primary"
+                  className="text-white"
+                  color="success"
                   onPress={() => window.location.reload()}
                 >
-                  Action
+                  Next Map
                 </Button>
               </ModalFooter>
             </>
-          )}
+          }
         </ModalContent>
       </Modal>
     </div>

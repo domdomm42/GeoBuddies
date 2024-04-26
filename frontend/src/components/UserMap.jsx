@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useGoogleMaps } from "./GoogleMapsProvider";
 import { APIProvider, Map, AdvancedMarker } from "@vis.gl/react-google-maps";
-import SubmitButton from "./SubmitButton";
 import AnswerOverlay from "./AnswerOverlay";
 
 function UserMap(streetViewCoordinates) {
