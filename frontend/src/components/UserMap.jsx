@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useGoogleMaps } from "./GoogleMapsProvider";
-import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
+import { APIProvider, Map, AdvancedMarker } from "@vis.gl/react-google-maps";
 import SubmitButton from "./SubmitButton";
+import AnswerOverlay from "./AnswerOverlay";
 
 function UserMap() {
   const { isLoaded } = useGoogleMaps();
@@ -19,13 +20,6 @@ function UserMap() {
     setMapOpacity("0.5");
   };
 
-  const handleFocus = () => {
-    handleMouseOver(); 
-  };
-
-  const handleBlur = () => {
-    handleMouseOut(); 
-
   if (!isLoaded) return <div>Loading Maps...</div>;
 
   return (
@@ -33,8 +27,8 @@ function UserMap() {
       className="userMap"
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
+      // onFocus={handleFocus}
+      // onBlur={handleBlur}
       tabIndex="0"
     >
       <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
@@ -51,11 +45,12 @@ function UserMap() {
           onClick={(e) =>
             setMarker({ lat: e.detail.latLng.lat, lng: e.detail.latLng.lng })
           }
+          mapId={import.meta.env.VITE_GOOGLE_MAPS_ID}
         >
-          <Marker position={marker} />
+          <AdvancedMarker position={marker} />
         </Map>
       </APIProvider>
-      <SubmitButton width={mapSize.width} opacity={mapOpacity} />
+      <AnswerOverlay />
     </div>
   );
 }

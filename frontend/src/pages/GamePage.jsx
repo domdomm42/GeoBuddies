@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import StreetViewMap from "../components/StreetViewMap";
 import UserMap from "../components/UserMap";
 import "./GamePage.css";
-
+import { useGoogleMaps } from "../components/GoogleMapsProvider";
 export default function GamePage() {
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
   const [isLoading, setIsLoading] = useState(true);
+  const { isLoaded } = useGoogleMaps(); // Use the isLoaded from your GoogleMapsProvider
 
   // Upon initial load
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function GamePage() {
 
   return (
     <div className="game-container">
-      {isLoading ? (
+      {isLoading || !isLoaded || coordinates.lat === null ? (
         <p>Loading...</p>
       ) : (
         <>

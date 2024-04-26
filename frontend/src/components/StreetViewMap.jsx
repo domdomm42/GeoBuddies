@@ -4,7 +4,9 @@ import { useGoogleMaps } from "./GoogleMapsProvider";
 
 export default function StreetViewMap({ long, lat }) {
   const { isLoaded } = useGoogleMaps();
+  console.log(isLoaded);
   const panoRef = useRef(null);
+  console.log(long, lat);
 
   useEffect(() => {
     if (

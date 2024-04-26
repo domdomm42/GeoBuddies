@@ -9,7 +9,7 @@ body {
 
 .user-selection {
   display: flex;
-  z-index: 1000;
+  z-index: 2;
 }
 
 .userMap {
@@ -18,7 +18,7 @@ body {
   bottom: 4vh;
 }
 
-.submitButton {
+.answerOverlay {
   margin-top: 1vh;
   display: flex;
   justify-content: center;
