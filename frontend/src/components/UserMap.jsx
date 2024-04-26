@@ -4,7 +4,7 @@ import { APIProvider, Map, AdvancedMarker } from "@vis.gl/react-google-maps";
 import SubmitButton from "./SubmitButton";
 import AnswerOverlay from "./AnswerOverlay";
 
-function UserMap() {
+function UserMap(streetViewCoordinates) {
   const { isLoaded } = useGoogleMaps();
   const [marker, setMarker] = useState({ lat: 22.54992, lng: 0 });
   const [mapSize, setMapSize] = useState({ height: "25vh", width: "25vw" });
@@ -50,7 +50,10 @@ function UserMap() {
           <AdvancedMarker position={marker} />
         </Map>
       </APIProvider>
-      <AnswerOverlay />
+      <AnswerOverlay
+        userPinnedCoordinates={marker}
+        streetViewCoordinates={streetViewCoordinates}
+      />
     </div>
   );
 }

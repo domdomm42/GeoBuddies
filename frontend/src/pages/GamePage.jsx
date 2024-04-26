@@ -4,6 +4,7 @@ import UserMap from "../components/UserMap";
 import "./GamePage.css";
 import { useGoogleMaps } from "../components/GoogleMapsProvider";
 export default function GamePage() {
+  // streetview coordinates
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
   const [isLoading, setIsLoading] = useState(true);
   const { isLoaded } = useGoogleMaps(); // Use the isLoaded from your GoogleMapsProvider
@@ -42,7 +43,7 @@ export default function GamePage() {
         <>
           <StreetViewMap long={coordinates.lng} lat={coordinates.lat} />
           <div className="user-selection">
-            <UserMap />
+            <UserMap streetViewCoordinates={coordinates} />
           </div>
         </>
       )}
