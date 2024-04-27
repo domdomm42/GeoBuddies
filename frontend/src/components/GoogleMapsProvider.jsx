@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
+import { Loader } from "@googlemaps/js-api-loader";
 
 const GoogleMapsContext = createContext({ isLoaded: false, loadError: null });
 
@@ -9,39 +10,25 @@ export const GoogleMapsProvider = ({ children }) => {
   const [loadError, setLoadError] = useState(null);
 
   useEffect(() => {
-    const scriptId = "google-maps-script";
+    const loader = new Loader({
+      apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+      version: "weekly",
+      libraries: ["places"],
+    });
 
-    window.handleGoogleMapsLoad = () => {
-      setIsLoaded(true);
-      setLoadError(null);
-    };
-
-    if (document.getElementById(scriptId) || window.google) {
-      if (window.google) {
-        window.handleGoogleMapsLoad();
-      }
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.id = scriptId;
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${
-      import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-    }&callback=handleGoogleMapsLoad`;
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-
-    script.onerror = () => {
-      setLoadError("Failed to load the Google Maps script.");
-      delete window.handleGoogleMapsLoad;
-    };
+    loader
+      .load()
+      .then(() => {
+        setIsLoaded(true);
+        setLoadError(null);
+      })
+      .catch((error) => {
+        console.error("Error loading Google Maps", error);
+        setIsLoaded(false);
+        setLoadError("Failed to load Google Maps");
+      });
 
     return () => {
-      const existingScript = document.getElementById(scriptId);
-      if (existingScript) {
-        existingScript.remove();
-      }
       delete window.handleGoogleMapsLoad;
     };
   }, []);

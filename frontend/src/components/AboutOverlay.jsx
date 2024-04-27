@@ -24,23 +24,24 @@ export default function AboutOverlay() {
                 About GeoBuddies
               </ModalHeader>
               <ModalBody>
+                <p>This is a personal project.</p>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                  All credits goes to GeoGuessr which is where I got the idea to
+                  create this app.
                 </p>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                  <b>Why did I decide to make a GeoGuessr clone?</b>
                 </p>
+                While doing a catchup call with my high school friends who are
+                in different cities/countries, we&apos;ve decided to mess around
+                and test our geo skills in GeoGuessr. I&apos;ve unfortunately
+                hit a level(level 2 in my case) that does not allow me to play
+                GeoGuessr for free anymore.
                 <p>
-                  Magna exercitation reprehenderit magna aute tempor cupidatat
-                  consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
-                  incididunt cillum quis. Velit duis sit officia eiusmod Lorem
-                  aliqua enim laboris do dolor eiusmod. Et mollit incididunt
-                  nisi consectetur esse laborum eiusmod pariatur proident Lorem
-                  eiusmod et. Culpa deserunt nostrud ad veniam.
+                  Being the broke comp-sci student I was, I&apos;ve decided to
+                  make my own GeoGuessr called GeoBuddies. It is currently still
+                  in production and I still have ideas I want to implement
+                  including nostalgic easter eggs that will make us reminisce.
                 </p>
               </ModalBody>
               <ModalFooter>
