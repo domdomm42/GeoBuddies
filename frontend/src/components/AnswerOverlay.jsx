@@ -75,22 +75,23 @@ export default function AnswerOverlay({
         onOpenChange={onOpenChange}
         isDismissable={false}
         isKeyboardDismissDisabled={true}
+        hideCloseButton={true}
       >
-        <ModalContent>
+        <ModalContent className="flex flex-col align-middle justify-center">
           {
             <>
-              <ModalHeader className="flex flex-col gap-1">
+              <ModalHeader>
                 Distance is off by {distanceFromLocation} meters
               </ModalHeader>
               <ModalBody>
                 <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
                   <Map
                     style={{
-                      width: "20vw",
-                      height: "20vh",
+                      width: "100%",
+                      height: "30vh",
                       opacity: 1,
                     }}
-                    defaultCenter={{ lat: 22.54992, lng: 0 }}
+                    defaultCenter={streetViewCoordinates.streetViewCoordinates}
                     defaultZoom={3}
                     gestureHandling="greedy"
                     disableDefaultUI={true}
@@ -100,7 +101,11 @@ export default function AnswerOverlay({
                     <AdvancedMarker
                       position={streetViewCoordinates.streetViewCoordinates}
                     >
-                      <Pin background="#45d483" borderColor="green"></Pin>
+                      <Pin
+                        background="#45d483"
+                        borderColor="green"
+                        glyph={"🏁"}
+                      ></Pin>
                     </AdvancedMarker>
                   </Map>
                 </APIProvider>

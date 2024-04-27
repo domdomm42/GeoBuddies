@@ -8,7 +8,6 @@ function UserMap(streetViewCoordinates) {
   const [marker, setMarker] = useState({ lat: 22.54992, lng: 0 });
   const [mapSize, setMapSize] = useState({ height: "25vh", width: "25vw" });
   const [mapOpacity, setMapOpacity] = useState("0.5");
-
   const handleMouseOver = () => {
     setMapSize({ height: "40vh", width: "40vw" });
     setMapOpacity("1");
@@ -26,8 +25,6 @@ function UserMap(streetViewCoordinates) {
       className="userMap"
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
-      // onFocus={handleFocus}
-      // onBlur={handleBlur}
       tabIndex="0"
     >
       <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
@@ -44,6 +41,8 @@ function UserMap(streetViewCoordinates) {
           onClick={(e) =>
             setMarker({ lat: e.detail.latLng.lat, lng: e.detail.latLng.lng })
           }
+          onDrag={handleMouseOver}
+          // onMouseOut={handleMouseUp}
           mapId={import.meta.env.VITE_GOOGLE_MAPS_ID}
         >
           <AdvancedMarker position={marker} />

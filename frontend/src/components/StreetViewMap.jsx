@@ -19,6 +19,8 @@ export default function StreetViewMap({ long, lat }) {
         position: { lat, lng: long },
         pov: { heading: 34, pitch: 10 },
         visible: true,
+        disableDefaultUI: true,
+        panControl: true,
       });
     }
   }, [isLoaded, long, lat]);

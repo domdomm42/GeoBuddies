@@ -14,8 +14,8 @@ body {
 
 .userMap {
   position: absolute;
-  right: 2vw;
-  bottom: 4vh;
+  right: 4vw;
+  bottom: 3vh;
 }
 
 .answerOverlay {
