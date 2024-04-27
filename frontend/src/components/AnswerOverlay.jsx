@@ -28,6 +28,7 @@ export default function AnswerOverlay({
     e.stopPropagation();
   };
 
+  // Haversine formula,
   const findAnswerDistance = (userPinnedCoordinates, streetViewCoordinates) => {
     const R = 6371e3; // Earth's radius in meters
     const rad = Math.PI / 180; // conversion factor from degrees to radians
@@ -47,7 +48,6 @@ export default function AnswerOverlay({
         Math.sin(deltaLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = R * c; // Distance in meters
-    console.log(d);
     setDistanceFromLocation(Math.round(d));
   };
 

@@ -11,7 +11,7 @@ const locationSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { collection: "Australia" }
+  { collection: "Location" }
 );
 
 module.exports = mongoose.model("Location", locationSchema);

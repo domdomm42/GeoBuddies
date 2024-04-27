@@ -1,0 +1,49 @@
+.signika-signika {
+  font-family: "Signika", Arial, Helvetica, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
+}
+
+.homepage {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.playSidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.playButton,
+.aboutButton {
+  background-color: transparent;
+  font-family: "Signika", Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-size: 25px;
+  height: 10vh;
+  color: white;
+}
+
+.animation {
+  display: flex;
+  flex: 5;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    to right,
+    black 0%,
+    rgb(81, 38, 60) 15%,
+    rgb(65, 65, 158) 100%
+  );
+}
+
+.earthGif {
+  height: 60vh;
+}
