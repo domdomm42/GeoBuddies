@@ -15,7 +15,7 @@ export default function GamePage() {
   useEffect(() => {
     const getRandomLocation = async () => {
       try {
-        const res = await fetch("http://localhost:3000/location");
+        const res = await fetch("https://geobuddies.onrender.com/location");
 
         // if success in getting location
         if (res.ok) {
