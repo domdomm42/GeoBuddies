@@ -13,7 +13,7 @@ export const GoogleMapsProvider = ({ children }) => {
     const loader = new Loader({
       apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
       version: "weekly",
-      libraries: ["places"],
+      libraries: ["places", "streetView"],
     });
 
     loader
@@ -27,10 +27,6 @@ export const GoogleMapsProvider = ({ children }) => {
         setIsLoaded(false);
         setLoadError("Failed to load Google Maps");
       });
-
-    return () => {
-      delete window.handleGoogleMapsLoad;
-    };
   }, []);
 
   return (

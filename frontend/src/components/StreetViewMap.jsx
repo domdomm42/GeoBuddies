@@ -7,13 +7,8 @@ export default function StreetViewMap({ long, lat }) {
   const panoRef = useRef(null);
 
   useEffect(() => {
-    if (
-      isLoaded &&
-      window.google &&
-      window.google.maps &&
-      window.google.maps.StreetViewPanorama
-    ) {
-      new window.google.maps.StreetViewPanorama(panoRef.current, {
+    if (isLoaded && google && google.maps && google.maps.StreetViewPanorama) {
+      new google.maps.StreetViewPanorama(panoRef.current, {
         position: { lat, lng: long },
         pov: { heading: 34, pitch: 10 },
         visible: true,
@@ -22,7 +17,6 @@ export default function StreetViewMap({ long, lat }) {
       });
     }
   }, [isLoaded, long, lat]);
-
 
   return <div ref={panoRef} style={{ width: "100vw", height: "100vh" }} />;
 }

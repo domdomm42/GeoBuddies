@@ -3,11 +3,13 @@ import StreetViewMap from "../components/StreetViewMap";
 import UserMap from "../components/UserMap";
 import "./GamePage.css";
 import { useGoogleMaps } from "../components/GoogleMapsProvider";
+import { Button } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 export default function GamePage() {
   // streetview coordinates
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
   const [isLoading, setIsLoading] = useState(true);
-  const { isLoaded } = useGoogleMaps(); // Use the isLoaded from your GoogleMapsProvider
+  const { isLoaded } = useGoogleMaps();
 
   // Upon initial load
   useEffect(() => {
@@ -18,6 +20,7 @@ export default function GamePage() {
         // if success in getting location
         if (res.ok) {
           const data = await res.json();
+
           setCoordinates({
             lat: data.coordinates[1],
             lng: data.coordinates[0],
@@ -41,6 +44,9 @@ export default function GamePage() {
         <p>Loading...</p>
       ) : (
         <>
+          <Link to={"/"}>
+            <Button className="backButton">Leave</Button>
+          </Link>
           <StreetViewMap long={coordinates.lng} lat={coordinates.lat} />
           <div className="user-selection">
             <UserMap streetViewCoordinates={coordinates} />

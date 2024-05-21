@@ -43,6 +43,16 @@ export default function AboutOverlay() {
                   in production and I still have ideas I want to implement
                   including nostalgic easter eggs that will make us reminisce.
                 </p>
+                <p>
+                  <b>
+                    NOTE: FOR NOW THE LOCATIONS ARE OF POPULAR DESTINATIONS,
+                    HENCE ON SOME LOCATIONS YOU MIGHT NOT BE ABLE TO MOVE AROUND
+                    why? I find it more fun especially when playing with friends
+                    if we have an idea of where something is. I will definitely
+                    extend the location list to more random ones once I get good
+                    at this :D.
+                  </b>
+                </p>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
