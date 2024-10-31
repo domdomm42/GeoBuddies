@@ -29,4 +29,4 @@ app.use(express.json());
 const locationRouter = require("./routes/location");
 app.use("/location", locationRouter);
 
-app.listen(3000, () => console.log("Server Started"));
+app.listen(3000, () => console.log("Server Started on port 3000"));
