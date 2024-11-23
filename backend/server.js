@@ -5,7 +5,13 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://geobuddies.netlify.app", "http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));

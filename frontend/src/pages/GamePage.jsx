@@ -15,7 +15,7 @@ export default function GamePage() {
   useEffect(() => {
     const getRandomLocation = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/location`);
+        const res = await fetch('/api/location');
 
         // if success in getting location
         if (res.ok) {
