@@ -3,3 +3,4 @@
   to = "http://ec2-3-27-173-142.ap-southeast-2.compute.amazonaws.com:3000/:splat"
   status = 200
   force = true
+  headers = {Access-Control-Allow-Origin = "*"}

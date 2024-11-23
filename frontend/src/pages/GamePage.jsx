@@ -15,24 +15,25 @@ export default function GamePage() {
   useEffect(() => {
     const getRandomLocation = async () => {
       try {
-        const res = await fetch('/api/location');
+        const res = await fetch('http://ec2-3-27-173-142.ap-southeast-2.compute.amazonaws.com:3000/location', {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        });
 
-        // if success in getting location
         if (res.ok) {
           const data = await res.json();
-
           setCoordinates({
             lat: data.coordinates[1],
             lng: data.coordinates[0],
           });
           setIsLoading(false);
-        }
-        // if failure in getting location
-        else {
+        } else {
           console.error("Error fetching location details");
         }
-      } catch (error) {
-        console.log("Error is", error);
+      } catch (err) {
+        console.log("Error is", err);
       }
     };
     getRandomLocation();
