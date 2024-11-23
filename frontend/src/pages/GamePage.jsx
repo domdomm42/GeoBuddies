@@ -15,7 +15,7 @@ export default function GamePage() {
   useEffect(() => {
     const getRandomLocation = async () => {
       try {
-        const res = await fetch('http://ec2-3-27-173-142.ap-southeast-2.compute.amazonaws.com:3000/location', {
+        const res = await fetch('/api/location', {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
